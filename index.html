@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="nl">
+    <head>
+        <title>Overzicht - Rental Beheer - Leaseplan</title>
+        <meta name="description" content=""> 
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" >
+        <meta http-equiv='Content-Type' content='text/html; charset='utf-8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noindex, nofollow" />
+        
+
+		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+        
+        <script src="js/vendor/angular.js"></script>
+        <script src="js/vendor/angular-route.js" type="text/javascript"></script>
+        <script src="js/vendor/angular-spinners.min.js" type="text/javascript"></script>        
+        <script src="js/vendor/smart-table.min.js" type="text/javascript"></script>
+        <script src="js/vendor/angular-ui-notification.min.js" type="text/javascript"></script>
+        <script src="js/app.js" type="text/javascript"></script>
+        <script src="js/controllers/cars-table.js" type="text/javascript"></script>
+        <script src="js/controllers/cars-add-edit.js" type="text/javascript"></script>
+        <script src="js/controllers/load-jlob.js" type="text/javascript"></script>
+        <script src="js/controllers/edit-form.js" type="text/javascript"></script>
+        
+        <script src="js/routes.js" type="text/javascript"></script>
+
+        <link rel="stylesheet" type="text/css" href="css/default-rental-beheer.css">
+        <!--[if IE 9]>
+            <link rel="stylesheet" type="text/css" href="${VERSIONED_CONTEXT}ie9.css">
+        <![endif]-->
+        
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>-->
+        
+    </head>
+    <body ng-app="rentalAdmin">
+        <div class="wrapper">
+            <header>
+                <div class="grid">
+                    <div class="grid-unit main-logo">
+                        <figure>
+                            <a href="http://www.leaseplan.nl" target="_blank">
+                                 <img src="images/leaseplan-logo.png" alt="LeasePlan">
+                            </a>
+                        </figure>
+                    </div>
+                </div>
+            </header>
+            <div class="mainmenu"> 
+                <a href="#" class="hamburger" role="menubar" aria-label="Sitepagina's"> 
+                    <span></span> <span></span> <span></span> 
+                </a> 
+                <nav class="menu" id="main-menu"> 
+                    <ol> 
+                        <li class="lfr-nav-item selected active menublock innerCell" id="layout_71" aria-selected="true" role="presentation"> 
+                            <a aria-labelledby="layout_71" class="" href="http://thefrontside.nl/angular" role="menuitem">Overzicht Huurauto's</a> 
+                        </li>
+                        <li class="lfr-nav-item selected menublock innerCell" id="layout_71" aria-selected="true" role="presentation"> 
+                            <a aria-labelledby="layout_71" class="" href="/angular/#/add" role="menuitem">Auto Toevoegen</a> 
+                        </li> 
+                     </ol>
+                 </nav>
+            </div>
+            <main class="list-zebra">
+                <div class="content">
+                    <div class="grid">
+                        
+                        
+						<div ng-view>
+							<spinner name="lpSpinner" show="true"></spinner>  
+						</div>
+                            
+                      
+                    </div>
+                </div>
+            </main>
+            <footer class="main-footer">
+                <div class="footer-top">
+                    <img src="images/leaseplan-logo.png" class="logo-inverted">
+                    <div class="grid">
+                        <div class="grid-unit-beta">
+                            <h3>Neem contact met ons op via</h3>
+                            <p class="social">
+                                <a class="li" href="https://linkedin.com/company/leaseplan-nederland" target="_blank">LinkedIn</a>
+                                <a class="em" href="http://www.leaseplan.nl/contact/" target="_blank">E-mail</a>
+                                <a class="fb" href="https://www.facebook.com/LeaseplanNederland" target="_blank">Facebook</a>
+                                <a class="tw" href="https://www.twitter.com/leaseplannl" target="_blank">Twitter</a>
+                            </p>
+                        </div>
+                        <div class="grid-unit-beta">
+                            <h3>Voor persoonlijk contact, bel</h3>
+                            <p class="phone">036 - 527 28 87</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="grid grid-alpha">
+                        <p class="centered-text"><a href="https://www.leaseplan.nl/juridisch/gebruiksvoorwaarden.asp" target="_blank">Gebruiksvoorwaarden</a> | <a href="https://www.leaseplan.nl/juridisch/privacy_beleid.asp" target="_blank">Privacy beleid</a> | 2015 LeasePlan | <a href="https://www.leaseplan.nl" target="_blank">LeasePlan.nl</a></p>
+                    </div>
+                </div>
+            </footer>
+        </div>

@@ -1,0 +1,231 @@
+
+<div class="grid-unit-alpha" ng-controller="CarsAddEditController">
+	<form ng-controller="loadCarJlob as lcj" name="userForm" ng-submit="UpdateData()">
+	    <h1>Auto Toevoegen</h1>
+	    <div class="top-container top-container-white search-box search-box-fullwidth add-car-form">
+	        <div class="inner-container">
+			   <div class="grid-unit-alpha">
+			      <h3>1. Autogegevens JLOB</h3>
+		       </div> 
+			   
+			   <div class="step1a">
+			      <div class="grid-unit-alpha">
+				      <div class="grid-unit-beta">
+				          <div class="text-field">
+				              <label for="typeId">TypeId</label> 
+				              <input data-required="true" name="typeId" type="text" ng-model="typeId"> 
+				          </div>
+				          </i><a href="http://jlob.leaseplan.nl/start" target="_blank">TypeId opzoeken in JLOB</a>
+			          </div>
+		              <div class="grid-unit-beta">
+		                  <a class="main-button" ng-click="loadJlob()">Autogegevens ophalen</a>
+		              </div>
+	              </div>
+
+			    </div>
+			    <div ng-class="nextSteps ? 'visible' : 'hidden'">
+				    <div class="step1b">
+					    <div class="grid-unit-alpha">
+		                      <div class="grid-unit-beta">
+		                            <table class="add-car" >
+		                                <tr>
+		                                    <td>Type ID:</td> 
+		                                    <td ng-bind="typeId"></td>
+		                                </tr>
+		                                <tr>         
+		                                    <td>Merk:</td> 
+		                                    <td ng-bind="brand"></td>
+		                                <tr>
+		                                    <td>Model:</td> 
+		                                    <td ng-bind="model"></td>
+		                                </tr>
+		                                <tr>
+		                                    <td>Carrosserie:</td> 
+		                                    <td ng-bind="bodyType"></td>
+		                                </tr>
+		                                <tr>
+		                                    <td>Brandstof:</td> 
+		                                    <td ng-bind="fuel"></td>
+		                                </tr>
+		                                <tr>
+		                                    <td>Bijtelling:</td> 
+                                            <td>{{ additionalTax }}%</td>
+		                                </tr>
+		                                <tr>
+                                            <td>Model Jaar:</td> 
+                                            <td ng-bind="modelYear"></td>
+                                        </tr>
+		                            </table>
+		                      </div>
+		                          
+		                      <div class="grid-unit-beta">
+		                            <img class="car-preview" ng-src="{{ image }}" />
+		                      </div>
+		                </div>
+				    </div>
+	                <div class="step2" >
+	                   <div class="grid-unit-alpha">
+	                       <h3>2. Autogegevens Handmatig</h3>
+	                   </div>
+	                   <div class="grit-unit-alpha">
+	                       <div class="grid-unit-beta">
+		                      <label for="rentalClass">Klasse</label> 
+		                      <div class="select-field"> 
+		                           <select id="rentalClass" ng-model="rentalClassOption.type" ng-options="option.value as option.name for option in rentalClassOptions"></select>
+		                       </div>
+		        
+		                   </div>
+	                   
+	                   
+		                   <div class="grid-unit-beta">
+		                      <label for="state">Staat</label> 
+		                      <div class="select-field"> 
+		                           <select ng-model="carStateOption.type" ng-options="option.value as option.name for option in carStateOptions"></select>
+		                       </div>
+		                   </div>
+	                   </div>
+	                </div>
+	
+	    
+	                <div class="step3">
+	                   <div class="grid-unit-alpha">
+	                       <h3 class="margin-top-30">3. Selecteer Beschikbare Diensten</h3>
+	                   </div>
+	                   <div class="grit-unit-alpha">
+		                   <div class="grid-unit-beta">
+		                      <h4>Accessoires</h4>
+		                      <div class="grid-unit-alpha">
+		                          <div class="checkbox-field">
+		                          <span>Navigatie</span>
+		                               <div class="checkbox-toggle">
+		                                    <input ng-model="navigatie" id="navigatie" name="navigatie" class="checkbox" type="checkbox">
+		                                    <label class="inline-label" for="navigatie"></label>
+		                               </div>
+		                          </div>
+	                              <div class="checkbox-field">
+	                              <span>Trekhaak</span>
+	                                   <div class="checkbox-toggle">
+	                                        <input ng-model="trekhaak" id="trekhaak" name="trekhaak" class="trekhaak" type="checkbox" value="false">
+	                                        <label class="inline-label" for="trekhaak"></label>
+	                                   </div>
+	                              </div>
+		                       </div>
+		                       
+		                      
+		           
+		                   </div>
+	                   
+		                   <div class="grid-unit-beta">
+		                      <h4>Services</h4>
+		                      <div class="grid-unit-alpha">
+	                              
+	                              <div class="checkbox-field">
+	                             <span>Winterbanden</span>
+	                                   <div class="checkbox-toggle">
+	                                        <input ng-model="winterbanden" id="winterbanden" name="winterbanden" class="checkbox" type="checkbox" value="Winterbanden">
+	                                        <label class="inline-label" for="winterbanden"></label>
+	                                   </div>
+	                              </div>
+	                              
+	                              <div class="checkbox-field">
+	                              <span>Tankpas</span>
+	                                   <div class="checkbox-toggle">
+	                                        <input ng-model="tankpas" id="tankpas" name="tankpas" class="checkbox" type="checkbox" value="Tankpas">
+	                                        <label class="inline-label" for="tankpas"></label>
+	                                   </div>
+	                              </div>
+	                              
+	                              <div class="checkbox-field">
+	                              <span>Verlaging eigen risico naar &#8364; 150,-</span>
+	                                   <div class="checkbox-toggle">
+	                                        <input ng-model="verlaging_er_150" id="verlaging-er" name="verlaging-er" class="checkbox" type="checkbox" value="Verlaging Eigen Risico naar €150,-">
+	                                        <label class="inline-label" for="verlaging-er"></label>
+	                                   </div>
+	                              </div>
+	                              
+	                              <div class="checkbox-field">
+	                              <span>Afkoop eigen risico</span>
+	                                   <div class="checkbox-toggle">
+	                                        <input ng-model="afkoop_er" id="afkoop-er" name="afkoop-er" class="checkbox" type="checkbox" value="Afkoop eigen risico">
+	                                        <label class="inline-label" for="afkoop-er"></label>
+	                                   </div>
+	                              </div>
+		                       </div>
+		                   </div>
+	                   </div>
+	                </div>
+	    
+	                <div class="step4">
+	                   <div class="grid-unit-alpha">
+	                       <div class="grid-unit-alpha">
+		                       <h3>4. Prijzen instellen</h3>
+		                   
+		                        <table class="prijsmatrix">
+		                            <thead>
+		                                <tr>
+		                                    <th></th>
+		                                    <th>1 t/m 6 maanden</th>
+		                                    <th>7 t/m 12 maanden</th>
+		                                    <th>13 t/m 24 maanden</th>
+		                                </tr>
+		                            </thead>
+		                            <tbody>
+		                                <tr>
+		                                    <td>0 - 1500 km per maand</td>
+		                                    <td><div class="text-field"><input ng-model="price1x1" type="number"></input></div></td>
+		                                    <td><div class="text-field"><input ng-model="price2x1" type="number"></input></div></td>
+		                                    <td><div class="text-field"><input ng-model="price3x1" type="number"></input></div></td>
+		                                </tr>
+		                                <tr>
+		                                    <td>1501 - 3000 km per maand </td>
+		                                    <td><div class="text-field"><input ng-model="price1x2" type="number"></input></div></td>
+		                                    <td><div class="text-field"><input ng-model="price2x2" type="number"></input></div></td>
+		                                    <td><div class="text-field"><input ng-model="price3x2" type="number"></input></div></td>
+		                                </tr>
+		                                <tr>
+		                                    <td>3001 - 4500 km per maand </td>
+		                                    <td><div class="text-field"><input ng-model="price1x3" type="number"></input></div></td>
+		                                    <td><div class="text-field"><input ng-model="price2x3" type="number"></input></div></td>
+		                                    <td><div class="text-field"><input ng-model="price3x3" type="number"></input></div></td>
+		                                </tr>
+		                                <tr>
+		                                    <td>4501 - 6000 km per maand</td>
+		                                    <td><div class="text-field"><input ng-model="price1x4" type="number"></input></div></td>
+		                                    <td><div class="text-field"><input ng-model="price2x4" type="number"></input></div></td>
+		                                    <td><div class="text-field"><input ng-model="price3x4" type="number"></input></div></td>
+		                                </tr>
+		                                <tr>
+		                                    <td>Prijs per km > 6000 km</td>
+		                                    <td><div class="text-field"><input type="text" ng-model="pricePerKm" type="number"></input></div></td>
+		                                    <td></td>
+		                                    <td></td>   
+		                                </tr>
+		                            </tbody>
+		                       </table>
+	                       </div>
+	                   </div>
+	                </div>
+	                <div class="step5">
+	                   <div class="grid-unit-alpha">
+	                       <h3>5. Publicatiestatus</h3>
+	                   </div>
+	                   <div class="grid-unit-beta"> 
+	                        <div class="radio-field">
+	                            <input id="ongepubliceerd" type="radio" value="0" ng-model="status.state" ng-change="updateVars()"> 
+	                            <label class="inline-label" for="ongepubliceerd">Ongepubliceerd</label> 
+	                                                
+	                            <input id="gepubliceerd" type="radio" value="1" ng-model="status.state" ng-change="updateVars()">
+	                            <label class="inline-label" for="gepubliceerd">Gepubliceerd</label> 
+	                        </div> 
+	                   </div>
+	                   <div class="grid-unit-alpha">
+	                        <button class="main-button" type="submit">Opslaan</button>
+	                        <div class="toggle back-to-overview"><a href="/#/">Terug naar overzicht?</a></div>
+	                    </div>                    
+	                </div>
+	           </div>        
+	        </div>
+	    </div>
+	</form>
+</div>
+

@@ -1,0 +1,16 @@
+{
+"status": "1",
+"typeId": "123456",
+"brand": "Tesla",
+"model": "S",
+"modelYear": 2015,
+"state": "Nieuw",
+"bodyType": "Roadster",
+"fuel": "Electric",
+"additionalTax": 14,
+"jatoImageUrl": "http://cdn.comheroes.nl/wp-content/themes/comheroes/img/logo_main.png",
+"rentalClass": "B",
+"services": "Tankpas, Winterbanden",
+"accessories": "Navigatie, Trekhaak",
+"priceMatrix": [{ "price1": 10, "price2": 20, "price3": 30}]
+ }

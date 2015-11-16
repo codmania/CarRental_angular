@@ -1,0 +1,49 @@
+<div class="grid-unit-alpha" ng-controller="safeCtrl">
+    <h1>Overzicht Huurauto's</h1>
+    <div class="top-container top-container-white search-box search-box-fullwidth">
+        <div class="inner-container table-container">
+            <table class="huurautos" st-table="displayedCollection" st-safe-src="rowCollection">
+                <thead>
+                    <tr>
+                        <th colspan="3">
+                            <div class="text-field">
+                                  <input st-search placeholder="Filter.." class="search" type="search"/>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>   
+                        <th st-sort="getters.typeId">Status</th>
+                        <th st-sort="typeId">TypeID</th>
+                        <th st-sort="brand">Merk</th>
+                        <th st-sort="model">Model</th>
+                        <th st-sort="year">Jaar</th>
+                        <th st-sort="class">Klasse</th>
+                        <th st-sort="state">Staat</th>
+                        <th st-sort="bodywork">Carrosserie</th>
+                        <th st-sort="fuelType">Brandstof</th>
+                        <th st-sort="additionalTax">Bijtelling</th>
+                        <th st-sort="additionalTax">Acties</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="car in displayedCollection">
+                        <td class="status" ng-class="{notPublished: $index==car.status}"><span></span></td>
+                        <td>{{ car.typeId }}</td>
+                        <td>{{ car.brand }}</td>
+                        <td>{{ car.model }}</td>
+                        <td>{{ car.modelYear }}</td>
+                        <td>{{ car.rentalClass }}</td>
+                        <td>{{ car.carState }}</td>
+                        <td>{{ car.bodyType }}</td>
+                        <td>{{ car.fuel }}</td>
+                        <td>{{ car.additionalTax }}%</td>
+                        <td>
+                            <a class="secondary-button" ng-href="#/edit/{{car.typeId}}">Bekijk</a>
+                            <span class="removeCar" ng-click="removeItem(car)">X</span>
+                        </td>
+                    </tr>
+                </tbody>
+             </table>
+        </div>
+    </div>
+</div>
